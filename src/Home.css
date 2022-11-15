@@ -1,0 +1,22 @@
+.home {
+  display: flex;
+  position: absolute;
+  width:100%;
+  height: 100%;
+}
+.conteudo{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 80%;
+}
+@font-face {
+  font-family: Roboto normal;
+  src: url("../src/font/Roboto-Thin.ttf");
+}
+*{
+  font-family: Roboto normal;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

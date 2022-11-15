@@ -1,0 +1,33 @@
+.balance{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+.balance .box{
+    margin-left: 12px;
+    margin-right: 12px;
+    display: flex;
+    border-radius: 20px;
+    height: 100%;
+    width: 20%;
+    box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.137);
+}
+.balance .box .info{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+}
+.balance .box .info h1{
+    color: rgb(197, 14, 182);
+}
+.balance .box .info h3{
+    color: rgb(46, 46, 46);
+}
+.balance .box .icone{
+    width: 30%;
+    height: 100%;
+}

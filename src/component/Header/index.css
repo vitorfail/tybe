@@ -1,0 +1,15 @@
+.header{
+    height: 75px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.header img, .icon{
+    margin: 16px;
+    width: 30px;
+    height: 30px;
+}
+.header .icon{
+    border-radius: 50%;
+    background: red;
+}
