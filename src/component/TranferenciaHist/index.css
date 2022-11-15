@@ -4,3 +4,31 @@
     height: 600px;
     width: 90%;
 }
+.tranfer .titulos{
+    width: 100%;
+    height: 90px;
+}
+.tranfer .titulos h2{
+    font-weight: 900;
+}
+.tranfer .titulos .nome, .tranfer .dados .nome{
+    width: 40%;
+}
+.tranfer .titulos .valor, .tranfer .dados .valor{
+    width: 20%;
+}
+.tranfer .titulos .tipo, .tranfer .dados .tipo{
+    width: 25%;
+}
+.tranfer .titulos .status, .tranfer .dados .status{
+    width: 15%;
+}
+.tranfer .dados{
+    width: 100%;
+    height: 80%;
+}
+.tranfer .dados .row{
+    border-bottom: 2px solid #eee;
+    width: 100%;
+    height: 30px;
+}

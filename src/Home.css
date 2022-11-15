@@ -5,6 +5,7 @@
   height: 100%;
 }
 .conteudo{
+  background: #eee;
   display: flex;
   flex-direction: column;
   height: 100%;
