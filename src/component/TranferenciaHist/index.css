@@ -1,14 +1,33 @@
 .tranfer{
-    border-radius: 20px;
-    box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.137);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 600px;
-    width: 90%;
+    width: 100%;
+    margin-top: 34px;
+}
+.historico{
+    box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.137);
+    border-radius: 20px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 87%;
+    width: 87%;
 }
 .tranfer .titulos{
-    width: 100%;
+    display: flex;
     height: 90px;
 }
-.tranfer .titulos h2{
+.tranfer .titulos, .tranfer .dados .row{
+    width: 100%;
+}
+.tranfer .titulos h3{
+    font-family: Roboto forte;
+    padding: 7px;
     font-weight: 900;
 }
 .tranfer .titulos .nome, .tranfer .dados .nome{
@@ -28,7 +47,7 @@
     height: 80%;
 }
 .tranfer .dados .row{
+    display: flex;
     border-bottom: 2px solid #eee;
-    width: 100%;
     height: 30px;
 }

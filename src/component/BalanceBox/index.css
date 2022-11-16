@@ -1,6 +1,7 @@
 .balance{
+    flex-wrap: wrap;
     width: 100%;
-    height: 100px;
+    height: 200px;
     display: flex;
     justify-content: center;
 }
@@ -10,7 +11,8 @@
     display: flex;
     border-radius: 20px;
     height: 100%;
-    width: 20%;
+    width: 22%;
+    background: white;
     box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.137);
 }
 .balance .box .info{
@@ -21,13 +23,27 @@
     width: 70%;
     height: 100%;
 }
+.balance #saldo{
+    background: rgb(197, 14, 182);
+}
+.balance #saldo h1, .balance #saldo h3{
+    color: white;
+}
 .balance .box .info h1{
+    font-size: 26px;
     color: rgb(197, 14, 182);
 }
 .balance .box .info h3{
     color: rgb(46, 46, 46);
 }
 .balance .box .icone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 30%;
     height: 100%;
+}
+.balance .box .icone img{
+    width: 55px;
+    height: 55px;
 }

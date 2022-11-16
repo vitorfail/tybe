@@ -9,11 +9,16 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow-y: auto;
   width: 80%;
 }
 @font-face {
+  font-family: Roboto forte;
+  src: url("../../font/Roboto-Bold.ttf");
+}
+@font-face {
   font-family: Roboto normal;
-  src: url("../src/font/Roboto-Thin.ttf");
+  src: url("../../font/Roboto-Thin.ttf");
 }
 *{
   font-family: Roboto normal;

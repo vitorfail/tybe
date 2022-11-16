@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Home from './Home';
+
+import Home from './pages/Home/Home';
+import Rout from './routes';
 
 
 const root = ReactDOM.createRoot(
@@ -8,6 +10,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Home />
+    <Rout />
   </React.StrictMode>
 );
