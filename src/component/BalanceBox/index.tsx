@@ -5,14 +5,17 @@ import Divida from '../../icons/divida.png'
 import Saldo from '../../icons/saldo.png'
 import Score from '../../icons/score.png'
 
-export default function BalanceBox(props){
+
+
+
+export default function BalanceBox(props: any | (() => any)){
     useEffect(() =>{
 
     })
-    const [score, setscore] = useState<number>(0)
-    const [saldo, setsaldo] = useState<number>(0)
-    const [divida, setdivida] = useState<number>(0)
-    const [credit, setcredit] = useState<number>(0)
+    const score = props.score
+    const saldo = props.saldos
+    const divida = props.saidas
+    const entradas = props.entradas
 
     return(
         <div className='balance'>
@@ -45,7 +48,7 @@ export default function BalanceBox(props){
             </div>
             <div className='box'>
                 <div className='info'>
-                    <h1>R$ {credit}</h1>
+                    <h1>R$ {entradas}</h1>
                     <h3>A Receber</h3>
                 </div>
                 <div className='icone'>

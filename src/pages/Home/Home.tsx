@@ -35,8 +35,8 @@ function Home() {
 		<div className="home">
 			<BarraLateral></BarraLateral>
 			<div className='conteudo'>
-				<Header></Header>
-				<BalanceBox itens={variaveis} ></BalanceBox>
+				<Header nome={nome}></Header>
+				<BalanceBox score={score} saldos={saldos} saidas={saidas} entradas={entradas} ></BalanceBox>
 				<TranferenciaHist></TranferenciaHist>
 			</div>
 		</div>
