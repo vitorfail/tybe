@@ -13,20 +13,29 @@ export default function Login(){
     const [password, setpassword] = useState<string>('')
     const [passwordCopy, setpasswordCopy] = useState<string>('')
     const history = useHistory()
+    const [errorSenha, seterrorSenha] = useState<boolean>(false)
+    const [errorPreench, seterrorPreench] = useState<boolean>(false)
+    const [errorInternet, seterrorInternet] = useState<boolean>(false)
     function login(){
-        if(password === passwordCopy && password !== ''){
-            Axios.post('api/cadastro', {user: username, pass: password}
+        seterrorSenha(false)
+        seterrorPreench(false)
+        seterrorInternet(false)
+        if(password !== ''){
+            Axios.post('api/login', {user: username, pass: password}
             ).then(res => {
-                if(res.data !== 0 && res.data !== 'nada'){
+                if(res.data !== 'Not found' && res.data !== 'nada'){
                     localStorage.setItem('token_jwt', res.data)
                     history.push('/')
+                }
+                else{
+                    setTimeout(() => {seterrorSenha(true)}, 100);
                 }
             }).catch(error =>{
                 console.log(error)
             })    
         }
         else{
-
+            setTimeout(() => {seterrorPreench(true)}, 100);
         }
     }
     return(
@@ -46,9 +55,12 @@ export default function Login(){
                                 <FontAwesomeIcon icon={faTwitter}/>                            
                             </div>
                         </div>
+                        <h2 className={errorPreench? 'preencha show': 'preencha'} >Preencha todos os campos*</h2>
+                        <h2 className={errorSenha? 'senha show': 'senha'} >Senha ou o email estão errados</h2>
+                        <h2 className={errorInternet? 'internet show': 'internet'} >Error, verifique sua internet e tente denovo ou entre em contato conosco</h2>
                         <input onChange={(event) => setusername(event.target.value)} placeholder='username'></input>
                         <input onChange={(event) => setpassword(event.target.value)} placeholder='password'></input>
-                        <button>Entrar</button>
+                        <button onClick={() => login()}>Entrar</button>
                     </div>: <div className='logar'>
                         <h1>Cadastrar</h1>
                         <div className='icones'>
@@ -65,7 +77,7 @@ export default function Login(){
                         <input onChange={(event) => setusername(event.target.value)} placeholder='username'></input>
                         <input onChange={(event) => setpassword(event.target.value)} placeholder='password'></input>
                         <input onChange={(event) => setpasswordCopy(event.target.value)} placeholder='password'></input>
-                        <button>Cadastrar</button>
+                        <button >Cadastrar</button>
                     </div>
                     }
                 </div>

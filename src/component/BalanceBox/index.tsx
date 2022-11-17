@@ -5,7 +5,7 @@ import Divida from '../../icons/divida.png'
 import Saldo from '../../icons/saldo.png'
 import Score from '../../icons/score.png'
 
-export default function BalanceBox(){
+export default function BalanceBox(props){
     useEffect(() =>{
 
     })
