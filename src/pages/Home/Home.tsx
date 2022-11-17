@@ -10,9 +10,9 @@ function Home() {
     <div className="home">
         <BarraLateral></BarraLateral>
         <div className='conteudo'>
-			<Header></Header>
-			<BalanceBox></BalanceBox>
-			<TranferenciaHist></TranferenciaHist>
+        <Header></Header>
+        <BalanceBox></BalanceBox>
+        <TranferenciaHist></TranferenciaHist>
         </div>
     </div>
   );

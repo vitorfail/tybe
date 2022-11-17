@@ -1,12 +1,34 @@
 import React,{useState} from 'react'
 import './Login.css'
+import { useHistory } from 'react-router-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons' 
+import Axios from '../../Axios'
 
 library.add(faFacebookF); 
 export default function Login(){
     const [log, setlog] = useState<boolean>(true)
+    const [username, setusername] = useState<string>('')
+    const [password, setpassword] = useState<string>('')
+    const [passwordCopy, setpasswordCopy] = useState<string>('')
+    const history = useHistory()
+    function login(){
+        if(password === passwordCopy && password !== ''){
+            Axios.post('api/cadastro', {user: username, pass: password}
+            ).then(res => {
+                if(res.data !== 0 && res.data !== 'nada'){
+                    localStorage.setItem('token_jwt', res.data)
+                    history.push('/')
+                }
+            }).catch(error =>{
+                console.log(error)
+            })    
+        }
+        else{
+
+        }
+    }
     return(
         <div className='login'>
             <div className='menu'>
@@ -24,8 +46,8 @@ export default function Login(){
                                 <FontAwesomeIcon icon={faTwitter}/>                            
                             </div>
                         </div>
-                        <input placeholder='username'></input>
-                        <input placeholder='password'></input>
+                        <input onChange={(event) => setusername(event.target.value)} placeholder='username'></input>
+                        <input onChange={(event) => setpassword(event.target.value)} placeholder='password'></input>
                         <button>Entrar</button>
                     </div>: <div className='logar'>
                         <h1>Cadastrar</h1>
@@ -40,9 +62,9 @@ export default function Login(){
                                 <FontAwesomeIcon icon={faTwitter}/>                            
                             </div>
                         </div>
-                        <input placeholder='username'></input>
-                        <input placeholder='password'></input>
-                        <input placeholder='password'></input>
+                        <input onChange={(event) => setusername(event.target.value)} placeholder='username'></input>
+                        <input onChange={(event) => setpassword(event.target.value)} placeholder='password'></input>
+                        <input onChange={(event) => setpasswordCopy(event.target.value)} placeholder='password'></input>
                         <button>Cadastrar</button>
                     </div>
                     }
@@ -62,8 +84,7 @@ export default function Login(){
                     }
 
                 </div>
-
-                </div>
+            </div>
         </div>
     )
 }
