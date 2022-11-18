@@ -1,17 +1,17 @@
-.modal-aviso{
+.aviso-pag{
     height: 100%;
     width: 100%;
     position: absolute;
-    z-index: 99;
+    z-index: 199;
     background: rgba(0, 0, 0, 0.199);
     display: none;
     justify-content: center;
     align-items: center;
 }
-.modal-aviso.show{
+.aviso-pag.show{
     display: flex;
 }
-.modal-aviso .aviso{
+.aviso-pag .aviso{
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.384);
     display: flex;
     justify-content: center;
@@ -22,7 +22,7 @@
     background: white;
     border-radius: 20px;
 }
-.modal-aviso .aviso p{
+.aviso-pag .aviso p{
     transition: all ease 0.2s;
     animation: aparecer linear 0.2s;
     font-family: Roboto media;
@@ -31,7 +31,7 @@
     font-size: 26px;
     width: 400px;
 }
-.modal-aviso .aviso button{
+.aviso-pag .aviso button{
     transition: all ease 0.2s;
     animation: aparecer--button linear 0.2s;
     font-family: Roboto media;
@@ -44,7 +44,7 @@
     border-radius: 20px;
     background: black;
 }
-.modal-aviso .aviso button:hover{
+.aviso-pag .aviso button:hover{
     cursor: pointer;
     background: white;
     border: 1px solid black;
@@ -67,7 +67,7 @@
     }
 }
 @media screen and (max-width:700px){
-    .modal-aviso .aviso{
+    .aviso-pag .aviso{
         width: 100%;
     }
 }

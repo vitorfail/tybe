@@ -1,0 +1,147 @@
+.modal-pag{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.199);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.modal-pag.show{
+    display: flex;
+}
+.modal-pag .aviso{
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.384);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+    height: 50%;
+    background: white;
+    border-radius: 20px;
+}
+.modal-pag .aviso input::placeholder{
+    color: transparent;
+    font-family: Roboto normal;
+}
+.modal-pag .aviso .entradas{
+    margin: 13px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 40px;
+}
+.modal-pag .aviso .entradas input{
+    background: rgb(194, 194, 194);
+    width: 100px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    outline: none;
+    height: 50px;
+    min-width: 100%;
+    font-size: 20px;
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -webkit-appearance: none;
+}
+.modal-pag .aviso .entradas input:focus{
+    border: 2px solid #3951b2;
+}
+.modal-pag .aviso .entradas input::placeholder{
+    color:transparent;
+}
+.modal-pag .aviso .entradas label{
+    margin-left: -163px;
+    pointer-events: none;
+    position: absolute;
+    font-size: 20px;
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    background:transparent;
+    box-sizing: border-box;
+}
+.modal-pag .aviso .entradas input:focus + .nome,
+.modal-pag .aviso .entradas input:not(:placeholder-shown) + label{    
+    font-size: 16px;
+    margin-top: -39px;
+    margin-left: -223px;
+    color: #3951b2;
+    background: white;
+    font-weight: 600;
+    z-index: 10;
+}
+.modal-pag .aviso .entradas input:focus ,
+.modal-pag .aviso .entradas input:not(:placeholder-shown){
+    background: white;
+    border: 2px solid #3951b2;
+}
+.modal-pag .aviso button{
+
+}
+.modal-pag .aviso button:hover{
+}
+.modal-pag .aviso .botoes{
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.modal-pag .aviso .botoes .cancel{
+    color: white;
+    border-radius: 20px;
+    background: rgb(204, 0, 0);
+}
+.modal-pag .aviso .botoes .ok{
+    color: white;
+    border-radius: 20px;
+    background: rgb(0, 65, 204);
+}
+.modal-pag .aviso .botoes .cancel, .modal-pag .aviso .botoes .ok{
+    transition: all ease 0.2s;
+    animation: aparecer--button linear 0.2s;
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+}
+.modal-pag .aviso .botoes .cancel:hover{
+    cursor: pointer;
+    background: white;
+    border: 1px solid rgb(204, 0, 0);
+    color: rgb(204, 0, 0);    
+}
+.modal-pag .aviso .botoes .ok:hover{
+    cursor: pointer;
+    background: white;
+    border: 1px solid rgb(0, 65, 204);
+    color: rgb(0, 65, 204);    
+}
+
+@keyframes aparecer {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes aparecer--button {
+    0%{
+        scale: 0.1;
+    }
+    100%{
+        scale: 1;
+    }
+}
+@media screen and (max-width:700px){
+    .modal-pag .aviso{
+        width: 100%;
+    }
+}

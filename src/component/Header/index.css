@@ -1,10 +1,37 @@
 .header{
+    padding: 2px 31px;
     height: 75px;
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-.header img, .icon{
+.header .img{
+    display: none;
+    background-image: url('../../icons/list.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.header button{
+    transition: all ease 0.2s;
+    width: 118px;
+    outline: none;
+    border: none;
+    background: rgb(207, 25, 25);
+    color: white;
+    font-size: 17px;
+    border-radius: 12px;
+}
+.header button:hover{
+    cursor: pointer;
+    border: 1px solid rgb(207, 25, 25);
+    color: rgb(207, 25, 25);
+    background: white;
+}
+.header .img:active{
+    animation: rodar linear 0.3s;
+}
+.header .img, .icon{
     margin: 16px;
     width: 30px;
     height: 30px;
@@ -20,4 +47,43 @@
     height: 40px;
     border-radius: 50%;
     background: red;
+}
+@keyframes rodar {
+    0%{
+        transition: all ease 0.2s;
+        transform: rotateZ(0deg);
+    }
+    50%{
+        transition: all ease 0.2s;
+        transform: rotateZ(100deg);
+    }
+    0%{
+        transition: all ease 0.2s;
+        transform: rotateZ(0deg);
+    }
+}
+@media screen and (max-width:700px) {
+    .header{
+        box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.479);
+        background: black;
+        color: white;
+    }
+    .header .icon_name{
+        width: 43%;
+    }
+    .balance{
+        min-height: 300px;
+    }
+    .header .img{
+        background-image: url('../../icons/list-2.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .header .img{
+        display: flex;
+    }
+    .header button{
+        display: none;
+    }
 }

@@ -1,13 +1,15 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import './Login.css'
 import { useHistory } from 'react-router-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons' 
 import Axios from '../../Axios'
+import { Contexto } from '../../context'
 
 library.add(faFacebookF); 
 export default function Login(){
+    const { setmodalAviso} = React.useContext(Contexto)
     const [log, setlog] = useState<boolean>(true)
     const [username, setusername] = useState<string>('')
     const [password, setpassword] = useState<string>('')
@@ -15,7 +17,15 @@ export default function Login(){
     const history = useHistory()
     const [errorSenha, seterrorSenha] = useState<boolean>(false)
     const [errorPreench, seterrorPreench] = useState<boolean>(false)
+    const [errorUser, seterrorUser] = useState<boolean>(false)
     const [errorInternet, seterrorInternet] = useState<boolean>(false)
+    useEffect(() => {
+        seterrorSenha(false)
+        seterrorPreench(false)
+        seterrorUser(false)
+        seterrorInternet(false)
+    }, [seterrorSenha, seterrorPreench, seterrorUser,seterrorInternet])
+
     function login(){
         seterrorSenha(false)
         seterrorPreench(false)
@@ -31,12 +41,39 @@ export default function Login(){
                     setTimeout(() => {seterrorSenha(true)}, 100);
                 }
             }).catch(error =>{
-                console.log(error)
+                setTimeout(() => {seterrorInternet(true)}, 100);
             })    
         }
         else{
             setTimeout(() => {seterrorPreench(true)}, 100);
         }
+    }
+    function cadastro(){
+        seterrorSenha(false)
+        seterrorPreench(false)
+        seterrorInternet(false)
+        seterrorUser(false)
+        if(password === '' || username === '' || passwordCopy === ''){
+            setTimeout(() => {seterrorPreench(true)}, 100);
+        }
+        else{
+            if(password === passwordCopy){
+                Axios.post('api/cadastro', {user: username, pass: password}
+                ).then(res => {
+                    if(res.data !== 'Not found'){
+                        setmodalAviso(true)
+                    }
+                    else{
+                        setTimeout(() => {seterrorUser(true)}, 100);
+                    }
+                }).catch(error =>{
+                    setTimeout(() => {seterrorInternet(true)}, 100)
+                })  
+            }
+            else{
+                setTimeout(() => {seterrorSenha(true)}, 100)
+            }
+        }  
     }
     return(
         <div className='login'>
@@ -55,11 +92,14 @@ export default function Login(){
                                 <FontAwesomeIcon icon={faTwitter}/>                            
                             </div>
                         </div>
+                        <div className='mudar'>
+                            <h3 onClick={() => setlog(false)}>Não tem conta?</h3>
+                        </div>
                         <h2 className={errorPreench? 'preencha show': 'preencha'} >Preencha todos os campos*</h2>
                         <h2 className={errorSenha? 'senha show': 'senha'} >Senha ou o email estão errados</h2>
                         <h2 className={errorInternet? 'internet show': 'internet'} >Error, verifique sua internet e tente denovo ou entre em contato conosco</h2>
                         <input onChange={(event) => setusername(event.target.value)} placeholder='username'></input>
-                        <input onChange={(event) => setpassword(event.target.value)} placeholder='password'></input>
+                        <input type='password' onChange={(event) => setpassword(event.target.value)} placeholder='password'></input>
                         <button onClick={() => login()}>Entrar</button>
                     </div>: <div className='logar'>
                         <h1>Cadastrar</h1>
@@ -74,10 +114,17 @@ export default function Login(){
                                 <FontAwesomeIcon icon={faTwitter}/>                            
                             </div>
                         </div>
+                        <div className='mudar'>
+                            <h3 onClick={() => setlog(true)}>Já tem uma conta?</h3>
+                        </div>
+                        <h2 className={errorPreench? 'preencha show': 'preencha'} >Preencha todos os campos*</h2>
+                        <h2 className={errorUser? 'user show': 'user'} >Esse usuário já existe escolha outro*</h2>
+                        <h2 className={errorSenha? 'senha show': 'senha'} >Sua senhas não estão iguais</h2>
+                        <h2 className={errorInternet? 'internet show': 'internet'} >Error, verifique sua internet e tente denovo ou entre em contato conosco</h2>
                         <input onChange={(event) => setusername(event.target.value)} placeholder='username'></input>
-                        <input onChange={(event) => setpassword(event.target.value)} placeholder='password'></input>
-                        <input onChange={(event) => setpasswordCopy(event.target.value)} placeholder='password'></input>
-                        <button >Cadastrar</button>
+                        <input type='password' onChange={(event) => setpassword(event.target.value)} placeholder='password'></input>
+                        <input type='password' onChange={(event) => setpasswordCopy(event.target.value)} placeholder='password'></input>
+                        <button onClick={() => cadastro()} >Cadastrar</button>
                     </div>
                     }
                 </div>

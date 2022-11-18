@@ -6,17 +6,34 @@ interface Props {
 }
 const ValoresIniciais = {
     modalAviso:false,
-    setmodalAviso:() => {}
+    setmodalAviso:() => {},
+    modalPag:false,
+    setmodalPag:() => {},
+    avisoPag:false,
+    setavisoPag:() => {},
+    avisoMensagem:'',
+    setavisoMensagem:() => {}
 }
 type Modais = {
     modalAviso:boolean;
-    setmodalAviso:(nextState: boolean) => void;
+    setmodalAviso:(nextState: boolean) => void,
+    modalPag:boolean,
+    setmodalPag:(nextState: boolean) => void,
+    avisoPag:boolean,
+    setavisoPag: (nextState: boolean) => void,
+    avisoMensagem:string,
+    setavisoMensagem:(nextState: string) => void
 }
 export const Contexto = React.createContext<Modais>(ValoresIniciais)
 export const ComponentContexto: React.FC<Props> = ({children}) => {
     const [modalAviso, setmodalAviso] = useState(ValoresIniciais.modalAviso)
+    const [ modalPag, setmodalPag] = useState(ValoresIniciais.modalPag)
+    const [ avisoPag, setavisoPag] = useState(ValoresIniciais.avisoPag)
+    const [ avisoMensagem, setavisoMensagem] = useState(ValoresIniciais.avisoMensagem)
+
     return(
-        <Contexto.Provider value={{modalAviso, setmodalAviso}}>
+        <Contexto.Provider value={{modalAviso, setmodalAviso, modalPag, setmodalPag,
+        avisoPag, setavisoPag, avisoMensagem , setavisoMensagem}}>
             {children}
         </Contexto.Provider>
     )

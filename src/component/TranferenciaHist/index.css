@@ -15,7 +15,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 87%;
+    height: 800px;
     width: 87%;
 }
 .tranfer .titulos{
@@ -50,4 +50,9 @@
     display: flex;
     border-bottom: 2px solid #eee;
     height: 30px;
+}
+@media screen and (max-width:700px) {
+    .tranfer .titulos .nome, .tranfer .dados .nome {
+        width: 22%;
+    }
 }

@@ -1,9 +1,11 @@
 import React from "react";
 import './index.css'
 import Logo from '../../icons/ng.png'
-const history = require('react-router-dom')
+import Exit from '../../Exit'
+import { useHistory } from "react-router-dom";
 
 export default function BarraLateral(){
+    const history = useHistory()
     function sair(){
         localStorage.removeItem('token_jwt');
         history.push('/')
@@ -16,7 +18,6 @@ export default function BarraLateral(){
             </div>
             <ul>
                 <a href="#">Home</a>
-                <a href="#">Transferência</a>
                 <a href="#" onClick={() => sair()}>Sair</a>
             </ul>
         </div>
