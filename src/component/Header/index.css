@@ -48,6 +48,45 @@
     border-radius: 50%;
     background: red;
 }
+.header .mini-menu.show{
+    display: flex;
+}
+.header .mini-menu{
+    z-index: 9;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.527);
+    border-radius: 10px;
+    background: rgb(131, 24, 145);
+    position: absolute;
+    margin-top: 74px;
+    margin-left: -14px;
+    width: 160px;
+    height: 196px;
+    color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.header .mini-menu::before{
+    box-shadow: -10px -10px 12px rgba(0, 0, 0, 0.527);
+    background: rgb(131, 24, 145);
+    margin-top: -100px;
+    margin-bottom: 9px;
+    margin-left: -69px;
+    content: '';
+    width: 36px;
+    height: 36px;
+    transform: rotateZ(45deg);
+}
+.header .mini-menu h3{
+    padding: 9px;
+    width: 100%;
+}
+.header .mini-menu h3:hover{
+    background: white;
+    color: rgb(131, 24, 145);
+    cursor: pointer;
+}
 @keyframes rodar {
     0%{
         transition: all ease 0.2s;

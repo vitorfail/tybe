@@ -83,12 +83,15 @@ export default function Login(){
                         <h1>Login</h1>
                         <div className='icones'>
                             <div className='img'>
+                                <a target="_blank" href="https://www.facebook.com/ng.cash.face"></a>
                                 <FontAwesomeIcon icon={faFacebookF}/>
                             </div>
                             <div className='img'>
+                                <a target="_blank" href="https://ng.cash/"></a>
                                 <FontAwesomeIcon icon={faGoogle}/>
                             </div>
                             <div className='img'>
+                                 <a target="_blank" href="https://twitter.com/NGCASH_"></a>                               
                                 <FontAwesomeIcon icon={faTwitter}/>                            
                             </div>
                         </div>
@@ -98,19 +101,28 @@ export default function Login(){
                         <h2 className={errorPreench? 'preencha show': 'preencha'} >Preencha todos os campos*</h2>
                         <h2 className={errorSenha? 'senha show': 'senha'} >Senha ou o email estão errados</h2>
                         <h2 className={errorInternet? 'internet show': 'internet'} >Error, verifique sua internet e tente denovo ou entre em contato conosco</h2>
-                        <input onChange={(event) => setusername(event.target.value)} placeholder='username'></input>
-                        <input type='password' onChange={(event) => setpassword(event.target.value)} placeholder='password'></input>
+                        <div className='entrada'>
+                            <input onChange={(event) => setusername(event.target.value)} placeholder='user'></input>
+                            <label className='nome'>Username</label>
+                        </div>
+                        <div className='entrada'>
+                            <input type='password' onChange={(event) => setpassword(event.target.value)} placeholder='senha'></input>
+                            <label className='nome'>Password</label>
+                        </div>
                         <button onClick={() => login()}>Entrar</button>
                     </div>: <div className='logar'>
                         <h1>Cadastrar</h1>
                         <div className='icones'>
                             <div className='img'>
+                                <a target="_blank" href="https://www.facebook.com/ng.cash.face"></a>
                                 <FontAwesomeIcon icon={faFacebookF}/>
                             </div>
                             <div className='img'>
+                                <a target="_blank" href="https://ng.cash/"></a>
                                 <FontAwesomeIcon icon={faGoogle}/>
                             </div>
                             <div className='img'>
+                                <a target="_blank" href="https://twitter.com/NGCASH_"></a>
                                 <FontAwesomeIcon icon={faTwitter}/>                            
                             </div>
                         </div>
@@ -121,9 +133,18 @@ export default function Login(){
                         <h2 className={errorUser? 'user show': 'user'} >Esse usuário já existe escolha outro*</h2>
                         <h2 className={errorSenha? 'senha show': 'senha'} >Sua senhas não estão iguais</h2>
                         <h2 className={errorInternet? 'internet show': 'internet'} >Error, verifique sua internet e tente denovo ou entre em contato conosco</h2>
-                        <input onChange={(event) => setusername(event.target.value)} placeholder='username'></input>
-                        <input type='password' onChange={(event) => setpassword(event.target.value)} placeholder='password'></input>
-                        <input type='password' onChange={(event) => setpasswordCopy(event.target.value)} placeholder='password'></input>
+                        <div className='entrada'>
+                            <input onChange={(event) => setusername(event.target.value)} placeholder='username'></input>
+                            <label className='nome'>Username</label>
+                        </div>
+                        <div className='entrada'>
+                            <input type='password' onChange={(event) => setpassword(event.target.value)} placeholder='password'></input>
+                            <label className='nome'>Senha</label>
+                        </div>
+                        <div className='entrada'>
+                            <input type='password' onChange={(event) => setpasswordCopy(event.target.value)} placeholder='password'></input>
+                            <label className='nome'>Repetir senha</label>
+                        </div>
                         <button onClick={() => cadastro()} >Cadastrar</button>
                     </div>
                     }

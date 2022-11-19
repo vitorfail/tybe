@@ -25,6 +25,7 @@
   src: url("../../font/Roboto-Thin.ttf");
 }
 *{
+  transition: all ease 0.2s;
   font-family: Roboto normal;
   box-sizing: border-box;
   margin: 0;

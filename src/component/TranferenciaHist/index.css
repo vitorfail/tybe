@@ -16,7 +16,7 @@
     justify-content: center;
     align-items: center;
     height: 800px;
-    width: 87%;
+    width: 37%;
 }
 .tranfer .titulos{
     display: flex;
@@ -30,18 +30,14 @@
     padding: 7px;
     font-weight: 900;
 }
-.tranfer .titulos .nome, .tranfer .dados .nome{
-    width: 40%;
-}
+
 .tranfer .titulos .valor, .tranfer .dados .valor{
-    width: 20%;
+    width: 50%;
 }
 .tranfer .titulos .tipo, .tranfer .dados .tipo{
-    width: 25%;
+    width: 50%;
 }
-.tranfer .titulos .status, .tranfer .dados .status{
-    width: 15%;
-}
+
 .tranfer .dados{
     width: 100%;
     height: 80%;

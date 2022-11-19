@@ -12,7 +12,9 @@ const ValoresIniciais = {
     avisoPag:false,
     setavisoPag:() => {},
     avisoMensagem:'',
-    setavisoMensagem:() => {}
+    setavisoMensagem:() => {},
+    recaregarComponent:false,
+    setrecaregarComponent:() => {}
 }
 type Modais = {
     modalAviso:boolean;
@@ -22,7 +24,10 @@ type Modais = {
     avisoPag:boolean,
     setavisoPag: (nextState: boolean) => void,
     avisoMensagem:string,
-    setavisoMensagem:(nextState: string) => void
+    setavisoMensagem:(nextState: string) => void,
+    recaregarComponent:boolean,
+    setrecaregarComponent:(nextState: boolean) => void
+
 }
 export const Contexto = React.createContext<Modais>(ValoresIniciais)
 export const ComponentContexto: React.FC<Props> = ({children}) => {
@@ -30,10 +35,12 @@ export const ComponentContexto: React.FC<Props> = ({children}) => {
     const [ modalPag, setmodalPag] = useState(ValoresIniciais.modalPag)
     const [ avisoPag, setavisoPag] = useState(ValoresIniciais.avisoPag)
     const [ avisoMensagem, setavisoMensagem] = useState(ValoresIniciais.avisoMensagem)
+    const [ recaregarComponent, setrecaregarComponent] = useState(ValoresIniciais.recaregarComponent)
+
 
     return(
         <Contexto.Provider value={{modalAviso, setmodalAviso, modalPag, setmodalPag,
-        avisoPag, setavisoPag, avisoMensagem , setavisoMensagem}}>
+        avisoPag, setavisoPag, avisoMensagem , setavisoMensagem, recaregarComponent, setrecaregarComponent}}>
             {children}
         </Contexto.Provider>
     )
