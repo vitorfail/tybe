@@ -15,7 +15,6 @@ function Home() {
 	const [saidas, setsaidas] = useState<number>(0)
 	const [entradas, setentradas] = useState<number>(0)
 	const [nome, setnome] = useState<string>('')
-	const [h, set ] = useState<any>([])
 	useEffect(() => {
 		const load  =  async ()=>{
 			Axios.post('api/home').then( res =>{
@@ -25,9 +24,6 @@ function Home() {
 					setsaidas(res.data.saidas)
 					setentradas(res.data.entradas)
 					setnome(res.data.nome)
-					var g = res.data.historico
-					
-					//set([g])
 				}
 				else{
 					Exit()
@@ -35,7 +31,6 @@ function Home() {
 			})
 		}
 		load()
-
 	})
 	return (
 		<div className="home">
@@ -43,7 +38,7 @@ function Home() {
 			<div className='conteudo'>
 				<Header nome={nome}></Header>
 				<BalanceBox score={score} saldos={saldos} saidas={saidas} entradas={entradas} ></BalanceBox>
-				<TranferenciaHist historico={h}></TranferenciaHist>
+				<TranferenciaHist></TranferenciaHist>
 			</div>
 		</div>
 	);

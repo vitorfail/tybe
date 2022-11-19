@@ -10,7 +10,7 @@ import Score from '../../icons/score.png'
 
 export default function BalanceBox(props: any | (() => any)){
     useEffect(() =>{
-
+        
     })
     const score = props.score
     const saldo = props.saldos
