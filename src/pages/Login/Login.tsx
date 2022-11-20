@@ -25,8 +25,10 @@ export default function Login(){
     useEffect(() => {
         seterrorSenha(false)
         seterrorPreench(false)
-        seterrorUser(false)
         seterrorInternet(false)
+        seterrorUser(false)
+        seterrorFormatoSenha(false)
+        seterrorFormatoUser(false)
     }, [seterrorSenha, seterrorPreench, seterrorUser,seterrorInternet])
     function check_senha(d:string){
         var regex = /[0-9]/
@@ -67,6 +69,7 @@ export default function Login(){
         seterrorInternet(false)
         seterrorUser(false)
         seterrorFormatoSenha(false)
+        seterrorFormatoUser(false)
         if(password === '' || username === '' || passwordCopy === ''){
             setTimeout(() => {seterrorPreench(true)}, 100);
         }
@@ -75,7 +78,7 @@ export default function Login(){
                 setTimeout(() => {seterrorFormatoUser(true)}, 100);
             }
             else{
-                if(check_senha(password)){
+                if(check_senha(password) === false){
                     setTimeout(() => {seterrorFormatoSenha(true)}, 100);
                 }
                 else{
@@ -97,7 +100,6 @@ export default function Login(){
                     }
         
                 }
-    
             }
         }  
     }
@@ -182,12 +184,12 @@ export default function Login(){
                         <div className='cadastro--display'>
                             <h1>Cadastro</h1>
                             <h3>Caso já tenha uma conta efetue o login</h3>
-                            <button onClick={() => setlog(false)}>Logar</button>
+                            <button onClick={() => setlog(false)}>Cadastrar</button>
                         </div>:
                         <div className='login--display'>
                             <h1>Logar</h1>
                             <h3>Caso não tenha conta tente se cadastrar</h3>
-                            <button onClick={() => setlog(true)}>Cadastrar</button>
+                            <button onClick={() => setlog(true)}>Entrar</button>
                         </div>
                     }
 

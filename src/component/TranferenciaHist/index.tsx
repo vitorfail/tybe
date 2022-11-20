@@ -57,6 +57,9 @@ export default function TranferenciaHistconst(){
     return(
         <div className='tranfer'>
             <div className="historico">
+                <div className='etiqueta'>
+                    <h3>Lista de tranferências</h3>
+                </div>
                 <div className='titulos'>
                     <h3 className="valor">Valor</h3>
                     <h3 className="tipo">Tipo</h3>

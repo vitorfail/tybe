@@ -131,8 +131,11 @@
 }
 .lado--esquerdo .senha , .lado--esquerdo .internet, .lado--esquerdo .preencha, 
 .lado--esquerdo .user, .lado--esquerdo .formato--senha,  .lado--esquerdo .formato--user{
+    height: 40px;
+    font-size: 17px;
     text-align: center;
     color: red;
+    font-weight: 900;
     transition: all ease 0.2s;
     display: none;
 }
