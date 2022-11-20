@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import {Bar} from 'react-chartjs-2' 
 import Axios from '../../Axios'
+import Bara from '../Bara'
 import './index.css'
 export default function TranferenciaHistconst(){
     const [janeiro, setjaneiro] = useState<number>(0)
@@ -17,17 +17,22 @@ export default function TranferenciaHistconst(){
     const [dezembro, setdezembro] = useState<number>(0)
     interface Json{
         id:number,
-        debitedAccountId:number,
-        creditedAccountId:number,
+        debitedAccountId:string,
+        creditedAccountId:string,
         value:string,
         createdAt:string,
         updatedAt:string,
         AccountId:null,
     }
     const configData = (d:string) => {
-        var data = new Date(d)
-        var data_formatada = data.getDate()+'/'+data.getMonth()+'/'+data.getFullYear()
-        return data_formatada
+        if(d ==="Nenhum"){
+            return ""
+        }
+        else{
+            var data = new Date(d)
+            var data_formatada = data.getDate()+'/'+data.getMonth()+'/'+data.getFullYear()
+            return data_formatada    
+        }
     }
     const [ list, setlist] = useState<Array<Json>>([])
     useEffect(() => {
@@ -36,7 +41,12 @@ export default function TranferenciaHistconst(){
             .then(res => {
                 if(res.data !== 'USER_ERROR'){
                     if(res.data.historico !== "ERROR"){
-                        setlist(res.data.historico)
+                        if(res.data.historico !== 0){
+                            setlist(res.data.historico)
+                        }
+                        else{
+                            setlist([{AccountId:null, id:1, debitedAccountId:"", createdAt:"" ,value: "", creditedAccountId:"Nenhum", updatedAt:"Nenhum"}])
+                        }
                     }
                 }
                 
@@ -63,31 +73,7 @@ export default function TranferenciaHistconst(){
                 </div>
             </div>
             <div className='planilha'>
-            <Bar
-                    data={{labels: ["Janeiro", "Fevereiro", "Março", "Abril", 
-                        "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
-                    datasets: [{
-                    label: "Faturamento mensal: R$",
-                    data: [janeiro, fevereiro, marco, abril, 
-                        maio, junho, julho, agosto, 
-                        setembro, outubro, novembro, dezembro],
-                    backgroundColor: ['rgba(255, 99, 132, 0.7)',
-                    'rgba(255, 159, 64, 0.7)',
-                    'rgba(255, 205, 86, 0.7)',
-                    'rgba(75, 192, 192, 0.7)',
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(153, 102, 255, 0.7)',
-                    'rgba(201, 203, 207, 0.7)',
-                    'rgba(101, 253, 227, 0.7)',
-                    'rgba(221, 103, 127, 0.7)',
-                    'rgba(21, 83, 207, 0.7)',
-                    'rgba(221, 73, 27, 0.7)',
-                    'rgba(81, 43, 127, 0.7)'],
-                    borderColor: 'rgba(0,0,0,0)',
-                    borderWidth: 2
-                }]}}
-                
-                />
+                <Bara janeiro={janeiro} fevereiro={fevereiro} marco={marco} abril={abril} maio={maio} junho={junho} julho={julho} agosto={agosto} setembro={setembro} outubro={outubro} novembro={novembro} dezembro={dezembro} ></Bara>
             </div>
         </div>
     )

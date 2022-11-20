@@ -19,13 +19,26 @@ export default function Login(){
     const [errorPreench, seterrorPreench] = useState<boolean>(false)
     const [errorUser, seterrorUser] = useState<boolean>(false)
     const [errorInternet, seterrorInternet] = useState<boolean>(false)
+    const [errorFormatoSenha, seterrorFormatoSenha] = useState<boolean>(false)
+    const [errorFormatoUser, seterrorFormatoUser] = useState<boolean>(false)
+
     useEffect(() => {
         seterrorSenha(false)
         seterrorPreench(false)
         seterrorUser(false)
         seterrorInternet(false)
     }, [seterrorSenha, seterrorPreench, seterrorUser,seterrorInternet])
-
+    function check_senha(d:string){
+        var regex = /[0-9]/
+        var test1 = regex.test(d)
+        var test2 = /[A-Z]/.test(d);
+        if(d.length >= 8 || test1 === true || test2 === true){
+            return true
+        }
+        else{
+            return false
+        }
+    }
     function login(){
         seterrorSenha(false)
         seterrorPreench(false)
@@ -53,25 +66,38 @@ export default function Login(){
         seterrorPreench(false)
         seterrorInternet(false)
         seterrorUser(false)
+        seterrorFormatoSenha(false)
         if(password === '' || username === '' || passwordCopy === ''){
             setTimeout(() => {seterrorPreench(true)}, 100);
         }
         else{
-            if(password === passwordCopy){
-                Axios.post('api/cadastro', {user: username, pass: password}
-                ).then(res => {
-                    if(res.data !== 'Not found'){
-                        setmodalAviso(true)
-                    }
-                    else{
-                        setTimeout(() => {seterrorUser(true)}, 100);
-                    }
-                }).catch(error =>{
-                    setTimeout(() => {seterrorInternet(true)}, 100)
-                })  
+            if(username.length <3){
+                setTimeout(() => {seterrorFormatoUser(true)}, 100);
             }
             else{
-                setTimeout(() => {seterrorSenha(true)}, 100)
+                if(check_senha(password)){
+                    setTimeout(() => {seterrorFormatoSenha(true)}, 100);
+                }
+                else{
+                    if(password === passwordCopy){
+                        Axios.post('api/cadastro', {user: username, pass: password}
+                        ).then(res => {
+                            if(res.data !== 'Not found'){
+                                setmodalAviso(true)
+                            }
+                            else{
+                                setTimeout(() => {seterrorUser(true)}, 100);
+                            }
+                        }).catch(error =>{
+                            setTimeout(() => {seterrorInternet(true)}, 100)
+                        })  
+                    }
+                    else{
+                        setTimeout(() => {seterrorSenha(true)}, 100)
+                    }
+        
+                }
+    
             }
         }  
     }
@@ -133,6 +159,8 @@ export default function Login(){
                         <h2 className={errorUser? 'user show': 'user'} >Esse usuário já existe escolha outro*</h2>
                         <h2 className={errorSenha? 'senha show': 'senha'} >Sua senhas não estão iguais</h2>
                         <h2 className={errorInternet? 'internet show': 'internet'} >Error, verifique sua internet e tente denovo ou entre em contato conosco</h2>
+                        <h2 className={errorFormatoSenha? 'formato--senha show': 'formato--senha'} >A senha deve conter no mínimo 8 caracteres, um número e uma letra maiúscula</h2>                        
+                        <h2 className={errorFormatoUser? 'formato--user show': 'formato--user'} >O usuário deve conter no mínimo 3 caracteres</h2>
                         <div className='entrada'>
                             <input onChange={(event) => setusername(event.target.value)} placeholder='username'></input>
                             <label className='nome'>Username</label>

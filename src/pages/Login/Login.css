@@ -129,17 +129,22 @@
     border: 1px solid rgb(0, 0, 0);
     cursor: pointer;
 }
-.lado--esquerdo .senha , .lado--esquerdo .internet, .lado--esquerdo .preencha, .lado--esquerdo .user{
+.lado--esquerdo .senha , .lado--esquerdo .internet, .lado--esquerdo .preencha, 
+.lado--esquerdo .user, .lado--esquerdo .formato--senha,  .lado--esquerdo .formato--user{
     text-align: center;
     color: red;
     transition: all ease 0.2s;
     display: none;
 }
-.lado--esquerdo .senha.show , .lado--esquerdo .internet.show, .lado--esquerdo .preencha.show, .lado--esquerdo .user.show{
+.lado--esquerdo .senha.show , .lado--esquerdo .internet.show, .lado--esquerdo 
+.preencha.show, .lado--esquerdo .user.show, .lado--esquerdo .formato--senha.show, .lado--esquerdo 
+.formato--user.show{
     animation: tremer linear 0.3s;
     display: flex;
 }
-.lado--esquerdo .senha.show:focus , .lado--esquerdo .internet.show:focus, .lado--esquerdo .preencha.show:focus, .lado--esquerdo .user.show:focus{
+.lado--esquerdo .senha.show:focus , .lado--esquerdo .internet.show:focus, 
+.lado--esquerdo .preencha.show:focus, .lado--esquerdo .user.show:focus, .lado--esquerdo .formato--senha.show,
+ .lado--esquerdo .formato--user.show{
     animation: tremer linear 0.3s;
 }
 .lado--direito{
