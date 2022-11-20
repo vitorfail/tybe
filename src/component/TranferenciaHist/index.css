@@ -78,6 +78,7 @@
         width: 22%;
     }
     .tranfer{
+        margin-top: 80px;
         height: 1000px;
         flex-direction: column;
     }

@@ -1,8 +1,11 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import Axios from '../../Axios'
+import { Contexto } from '../../context'
 import Bara from '../Bara'
 import './index.css'
 export default function TranferenciaHistconst(){
+    const  {recaregarComponent} = React.useContext(Contexto)
+    const recarregar =recaregarComponent
     const [janeiro, setjaneiro] = useState<number>(0)
     const [fevereiro, setfevereiro] = useState<number>(0)
     const [marco, setmarco] = useState<number>(0)
@@ -42,6 +45,7 @@ export default function TranferenciaHistconst(){
                 if(res.data !== 'USER_ERROR'){
                     if(res.data.historico !== "ERROR"){
                         if(res.data.historico !== 0){
+
                             setlist(res.data.historico)
                         }
                         else{
