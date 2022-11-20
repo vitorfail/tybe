@@ -8,8 +8,15 @@ export default function ModalPag(){
     const {modalPag, setmodalPag, setavisoMensagem, setavisoPag} = React.useContext(Contexto)
     const [usuario, setusuario] = useState<string>('')
     const [valor, setvalor] = useState<string>('')
+    function mascara_valor(e:string){
+        var c = e.replace(/\D/g, "")
+        c = c.replace(/(\d)(\d{2})$/, "$1,$2")
+        c = c.replace(/(?=(\d{3})+(\D))\B/g, ".")
+        setvalor("R$ "+c) 
+    }
     function pagar(){
-        Axios.post('api/pagamento', {userpay:usuario, valor:valor})
+        var preco = parseFloat(((valor.replace('R$ ', '')).replace('.', '')).replace(',', '.'))
+        Axios.post('api/pagamento', {userpay:usuario, valor:preco})
         .then(res => {
             if(res.data !== "USER_ERROR"){
                 console.log(res.data.resultado)
@@ -49,7 +56,7 @@ export default function ModalPag(){
                     <label className='nome'>Usuário</label>
                 </div>
                 <div className='entradas'>
-                    <input value={valor} onChange={(event) => setvalor(event.target.value)}  placeholder='0,00' />
+                    <input type="text" value={ valor} onChange={(event) => mascara_valor(event.target.value)}  placeholder='0,00' />
                     <label className='nome'>Valor(R$)</label>
                 </div>
                 <div className='botoes'>

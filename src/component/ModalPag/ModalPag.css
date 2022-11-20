@@ -36,6 +36,7 @@
     height: 40px;
 }
 .modal-pag .aviso .entradas input{
+    padding-left: 10px;
     background: rgb(194, 194, 194);
     width: 100px;
     border: 1px solid lightgrey;

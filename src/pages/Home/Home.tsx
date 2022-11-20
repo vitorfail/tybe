@@ -7,9 +7,11 @@ import TranferenciaHist from '../../component/TranferenciaHist';
 import Axios from '../../Axios';
 import Exit from '../../Exit'
 import { Contexto } from '../../context';
+import Loading from '../../component/Loading/Loading';
 
 function Home() {
 	const {setrecaregarComponent} = React.useContext(Contexto)
+	const [ isLoading, setisLoading] = useState<boolean>(true)
 	const [score, setscore] = useState<number>(0)
 	const [saldos, setsaldos] = useState<number>(0)
 	const [saidas, setsaidas] = useState<number>(0)
@@ -31,8 +33,9 @@ function Home() {
 			})
 		}
 		load()
+		setTimeout(() => {setisLoading(false)}, 200)
 	})
-	return (
+	return (isLoading? <Loading></Loading>:
 		<div className="home">
 			<BarraLateral></BarraLateral>
 			<div className='conteudo'>
