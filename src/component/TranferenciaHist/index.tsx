@@ -18,6 +18,7 @@ export default function TranferenciaHistconst(){
     const [outubro, setoutubro] = useState<number>(0)
     const [novembro, setnovembro] = useState<number>(0)
     const [dezembro, setdezembro] = useState<number>(0)
+    const [ id, setid] = useState<number>(0)
     interface Json{
         id:number,
         debitedAccountId:string,
@@ -45,8 +46,8 @@ export default function TranferenciaHistconst(){
                 if(res.data !== 'USER_ERROR'){
                     if(res.data.historico !== "ERROR"){
                         if(res.data.historico !== 0){
-
-                            setlist(res.data.historico)
+                            setid(res.data.historico.id)
+                            setlist(res.data.historico.dados)
                         }
                         else{
                             setlist([{AccountId:null, id:1, debitedAccountId:"", createdAt:"" ,value: "", creditedAccountId:"Nenhum", updatedAt:"Nenhum"}])
@@ -58,6 +59,19 @@ export default function TranferenciaHistconst(){
         }
         load()
     },[])
+    function determinar_tipo_transferencia(d:string){
+        if(d === 'Nenhum'){
+            return "Nenhum"
+        }
+        else{
+            if(parseInt(d) === id){
+                return 'Recebido'
+            }
+            else{
+                return "Pago"
+            }    
+        }
+    }
     return(
         <div className='tranfer'>
             <div className="historico">
@@ -73,7 +87,7 @@ export default function TranferenciaHistconst(){
                     {list.map((item, index) => (
                         <div key={index} className="row">
                             <h3 className='valor'>R$ {item.value}</h3>
-                            <h3 className='tipo'>{item.creditedAccountId}</h3>
+                            <h3 className='tipo' id={determinar_tipo_transferencia(item.creditedAccountId)}>{determinar_tipo_transferencia(item.creditedAccountId)}</h3>
                             <h3 className='data'>{configData(item.updatedAt.toString())}</h3>
                         </div>
                     ))}

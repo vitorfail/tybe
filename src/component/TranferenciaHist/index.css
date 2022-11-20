@@ -29,6 +29,7 @@
     width: 80%;
 }
 .tranfer .titulos h3{
+    text-align: center;
     font-family: Roboto forte;
     padding: 7px;
     font-weight: 900;
@@ -49,11 +50,27 @@
     height: 70%;
 }
 .tranfer .dados .row{
+    overflow: hidden;
     margin-bottom: 6px;
     width: 80%;
     display: flex;
     border-bottom: 2px solid #eee;
+}
+.tranfer .dados .row #Recebido, .tranfer .dados .row #Pago{
     height: 30px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    scale: 0.9;
+}
+.tranfer .dados .row #Recebido:hover, .tranfer .dados .row #Pago:hover{
+    scale: 1;
+}
+.tranfer .dados .row #Recebido{
+    background: rgb(3, 146, 3);
+}
+.tranfer .dados .row #Pago{
+    background: rgb(202, 2, 2);
 }
 .tranfer .planilha{
     box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.137);
@@ -90,5 +107,9 @@
     .tranfer .planilha{
         height:450px;
         width: 100%;
+    }
+    .tranfer .dados .row{
+        width: 90%;
+        height: 40px;
     }
 }
