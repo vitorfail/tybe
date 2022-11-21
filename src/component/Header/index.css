@@ -42,6 +42,12 @@
     justify-content: space-between;
     align-items: center;
 }
+.header .icon_name h3{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+}
 .header .icon_letra{
     width: 40px;
     height: 40px;
@@ -111,7 +117,7 @@
         color: white;
     }
     .header .icon_name{
-        width: 43%;
+        width: 53%;
     }
     .balance{
         min-height: 300px;

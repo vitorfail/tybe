@@ -9,7 +9,7 @@ import { Contexto } from '../../context'
 
 library.add(faFacebookF); 
 export default function Login(){
-    const { setmodalAviso} = React.useContext(Contexto)
+    const { setmodalAviso, setloading} = React.useContext(Contexto)
     const [log, setlog] = useState<boolean>(true)
     const [username, setusername] = useState<string>('')
     const [password, setpassword] = useState<string>('')
@@ -45,21 +45,26 @@ export default function Login(){
         seterrorSenha(false)
         seterrorPreench(false)
         seterrorInternet(false)
+        setloading(true)
         if(password !== ''){
             Axios.post('api/login', {user: username, pass: password}
             ).then(res => {
                 if(res.data !== 'Not found' && res.data !== 'nada'){
                     localStorage.setItem('token_jwt', res.data)
+                    setloading(false)
                     history.push('/')
                 }
                 else{
+                    setloading(false)
                     setTimeout(() => {seterrorSenha(true)}, 100);
                 }
             }).catch(error =>{
+                setloading(false)
                 setTimeout(() => {seterrorInternet(true)}, 100);
             })    
         }
         else{
+            setloading(false)
             setTimeout(() => {seterrorPreench(true)}, 100);
         }
     }
@@ -70,15 +75,19 @@ export default function Login(){
         seterrorUser(false)
         seterrorFormatoSenha(false)
         seterrorFormatoUser(false)
+        setloading(true)
         if(password === '' || username === '' || passwordCopy === ''){
+            setloading(false)
             setTimeout(() => {seterrorPreench(true)}, 100);
         }
         else{
             if(username.length <3){
+                setloading(false)
                 setTimeout(() => {seterrorFormatoUser(true)}, 100);
             }
             else{
                 if(check_senha(password) === false){
+                    setloading(false)
                     setTimeout(() => {seterrorFormatoSenha(true)}, 100);
                 }
                 else{
@@ -86,16 +95,20 @@ export default function Login(){
                         Axios.post('api/cadastro', {user: username, pass: password}
                         ).then(res => {
                             if(res.data !== 'Not found'){
+                                setloading(false)
                                 setmodalAviso(true)
                             }
                             else{
+                                setloading(false)
                                 setTimeout(() => {seterrorUser(true)}, 100);
                             }
                         }).catch(error =>{
+                            setloading(false)
                             setTimeout(() => {seterrorInternet(true)}, 100)
                         })  
                     }
                     else{
+                        setloading(false)
                         setTimeout(() => {seterrorSenha(true)}, 100)
                     }
         
@@ -111,15 +124,15 @@ export default function Login(){
                         <h1>Login</h1>
                         <div className='icones'>
                             <div className='img'>
-                                <a target="_blank" href="https://www.facebook.com/ng.cash.face"></a>
+                                <a target="_blank" rel="noreferrer" href="https://www.facebook.com/ng.cash.face"> </a>
                                 <FontAwesomeIcon icon={faFacebookF}/>
                             </div>
                             <div className='img'>
-                                <a target="_blank" href="https://ng.cash/"></a>
+                                <a target="_blank" rel="noreferrer" href="https://ng.cash/"> </a>
                                 <FontAwesomeIcon icon={faGoogle}/>
                             </div>
                             <div className='img'>
-                                 <a target="_blank" href="https://twitter.com/NGCASH_"></a>                               
+                                 <a target="_blank" rel="noreferrer" href="https://twitter.com/NGCASH_"> </a>                               
                                 <FontAwesomeIcon icon={faTwitter}/>                            
                             </div>
                         </div>
@@ -142,15 +155,15 @@ export default function Login(){
                         <h1>Cadastrar</h1>
                         <div className='icones'>
                             <div className='img'>
-                                <a target="_blank" href="https://www.facebook.com/ng.cash.face"></a>
+                                <a target="_blank" rel="noreferrer" href="https://www.facebook.com/ng.cash.face"> </a>
                                 <FontAwesomeIcon icon={faFacebookF}/>
                             </div>
                             <div className='img'>
-                                <a target="_blank" href="https://ng.cash/"></a>
+                                <a target="_blank" rel="noreferrer" href="https://ng.cash/"> </a>
                                 <FontAwesomeIcon icon={faGoogle}/>
                             </div>
                             <div className='img'>
-                                <a target="_blank" href="https://twitter.com/NGCASH_"></a>
+                                <a target="_blank" rel="noreferrer" href="https://twitter.com/NGCASH_"> </a>
                                 <FontAwesomeIcon icon={faTwitter}/>                            
                             </div>
                         </div>

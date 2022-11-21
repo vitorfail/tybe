@@ -8,6 +8,7 @@ import Axios from '../../Axios';
 import Exit from '../../Exit'
 import { Contexto } from '../../context';
 import Loading from '../../component/Loading/Loading';
+import { internal_processStyles } from '@mui/styled-engine';
 
 function Home() {
 	const {setrecaregarComponent} = React.useContext(Contexto)
@@ -30,6 +31,10 @@ function Home() {
 				else{
 					Exit()
 				}
+			})
+			.catch(err =>{
+				alert("Houve algum problema na internet ou no servidor, por favor, verifique su conexão e tente efetuar o login denovo")
+				Exit()
 			})
 		}
 		load()

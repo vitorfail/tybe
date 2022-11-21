@@ -16,74 +16,83 @@ export default function Grafico(props){
     const [outubro, setoutubro] = useState(0)
     const [novembro, setnovembro] = useState(0)
     const [dezembro, setdezembro] = useState(0)
+    const [lista, setlista] = useState(props.faturamento_mes)
     useEffect(() => {
-        if(props.faturamento_mes[0].creditedAccountId !== "Nenhum"){
-            var janeiro_ =  0
-            var fevereiro_ =  0
-            var marco_ =  0
-            var abril_ =  0
-            var maio_ =  0
-            var junho_ =  0
-            var julho_ =  0
-            var agosto_ =  0
-            var setembro_ =  0
-            var outubro_ =  0
-            var novembro_ =  0
-            var dezembro_ =  0
-            for(var i = 0; props.faturamento_mes.length;i++){
-                var data = new Date(props.faturamento_mes[i].updatedAt)
-                if(data.getMonth() === 0){
-                    janeiro_ = janeiro_ + parseFloat(props.faturamento_mes[i].value)
-                }
-                if(data.getMonth() === 1){
-                    fevereiro_ = fevereiro_ + parseFloat(props.faturamento_mes[i].value)
-                }
-                if(data.getMonth() === 2){
-                    marco_ = marco_ + parseFloat(props.faturamento_mes[i].value)
-                }
-                if(data.getMonth() === 3){
-                    abril_ = abril_ + parseFloat(props.faturamento_mes[i].value)
-                }
-                if(data.getMonth() === 4){
-                    maio_ = maio_ + parseFloat(props.faturamento_mes[i].value)
-                }
-                if(data.getMonth() === 5){
-                    junho_ = junho_ + parseFloat(props.faturamento_mes[i].value)
-                }
-                if(data.getMonth() === 6){
-                    julho_ = julho_ + parseFloat(props.faturamento_mes[i].value)
-                }
-                if(data.getMonth() === 7){
-                    agosto_ = agosto_ + parseFloat(props.faturamento_mes[i].value)
-                }
-                if(data.getMonth() === 8){
-                    setembro_ = setembro_ + parseFloat(props.faturamento_mes[i].value)
-                }
-                if(data.getMonth() === 9){
-                    outubro_ = outubro_ + parseFloat(props.faturamento_mes[i].value)
-                }
-                if(data.getMonth() === 10){
-                    novembro_ = novembro_ + parseFloat(props.faturamento_mes[i].value)
-                }
-                if(data.getMonth() === 11){
-                    dezembro_ = dezembro_ + parseFloat(props.faturamento_mes[i].value)
-                }
+        const load = async () => {
+            if(lista.length > 0){
 
+                if(lista.creditedAccountId !== "Nenhum"){
+                    /*var janeiro_ =  0
+                    var fevereiro_ =  0
+                    var marco_ =  0
+                    var abril_ =  0
+                    var maio_ =  0
+                    var junho_ =  0
+                    var julho_ =  0
+                    var agosto_ =  0
+                    var setembro_ =  0
+                    var outubro_ =  0
+                    var novembro_ =  0
+                    var dezembro_ =  0
+                    for(var i = 0; lista.length;i++){
+                        var data = new Date(lista[i].updatedAt)
+                        if(data.getMonth() === 0){
+                            janeiro_ = janeiro_ + parseFloat(lista[i].value)
+                        }
+                        if(data.getMonth() === 1){
+                            fevereiro_ = fevereiro_ + parseFloat(lista[i].value)
+                        }
+                        if(data.getMonth() === 2){
+                            marco_ = marco_ + parseFloat(lista[i].value)
+                        }
+                        if(data.getMonth() === 3){
+                            abril_ = abril_ + parseFloat(lista[i].value)
+                        }
+                        if(data.getMonth() === 4){
+                            maio_ = maio_ + parseFloat(lista[i].value)
+                        }
+                        if(data.getMonth() === 5){
+                            junho_ = junho_ + parseFloat(lista[i].value)
+                        }
+                        if(data.getMonth() === 6){
+                            julho_ = julho_ + parseFloat(lista[i].value)
+                        }
+                        if(data.getMonth() === 7){
+                            agosto_ = agosto_ + parseFloat(lista[i].value)
+                        }
+                        if(data.getMonth() === 8){
+                            setembro_ = setembro_ + parseFloat(lista[i].value)
+                        }
+                        if(data.getMonth() === 9){
+                            outubro_ = outubro_ + parseFloat(lista[i].value)
+                        }
+                        if(data.getMonth() === 10){
+                            novembro_ = novembro_ + parseFloat(lista[i].value)
+                        }
+                        if(data.getMonth() === 11){
+                            dezembro_ = dezembro_ + parseFloat(lista[i].value)
+                        }
+        
+                    }
+                    setjaneiro(janeiro)
+                    setfevereiro(fevereiro)
+                    setmarco(marco)
+                    setabril(abril)
+                    setmaio(maio)
+                    setjunho(junho)
+                    setjulho(julho)
+                    setagosto(agosto)
+                    setsetembro(setembro)
+                    setoutubro(outubro)
+                    setnovembro(novembro)
+                    setdezembro(dezembro)*/
+        
+                }
             }
-            setjaneiro(janeiro)
-            setfevereiro(fevereiro)
-            setmarco(marco)
-            setabril(abril)
-            setmaio(maio)
-            setjunho(junho)
-            setjulho(julho)
-            setagosto(agosto)
-            setsetembro(setembro)
-            setoutubro(outubro)
-            setnovembro(novembro)
-            setdezembro(dezembro)
         }
-    },[])
+        load()
+        
+    },[setlista])
     return(
         <Bar
         data={{labels: ["Janeiro", "Fevereiro", "Março", "Abril", 
@@ -112,7 +121,7 @@ export default function Grafico(props){
             title:{
                 display:true,
                 text:'Faturamento mensal',
-                fontSize:20
+                fontSize:29
             },
             legend:{
                 display:true,

@@ -7,11 +7,11 @@ function Resolver() {
             return true
         }
         else{
-            return null
+            return false
         }
     }
     catch{
-        return null
+        return false
     }  
 }
 function RoutesPrivate({component: Component, ...rest}){
