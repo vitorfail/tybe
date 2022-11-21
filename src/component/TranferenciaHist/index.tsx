@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import Axios from '../../Axios'
 import { Contexto } from '../../context'
-import Bara from '../Bara'
+import Grafico from '../Grafico'
 import './index.css'
 export default function TranferenciaHistconst(){
     const  {recaregarComponent} = React.useContext(Contexto)
@@ -94,7 +94,7 @@ export default function TranferenciaHistconst(){
                 </div>
             </div>
             <div className='planilha'>
-                <Bara janeiro={janeiro} fevereiro={fevereiro} marco={marco} abril={abril} maio={maio} junho={junho} julho={julho} agosto={agosto} setembro={setembro} outubro={outubro} novembro={novembro} dezembro={dezembro} ></Bara>
+                <Grafico faturamento_mes={list} ></Grafico>
             </div>
         </div>
     )
