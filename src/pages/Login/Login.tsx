@@ -195,14 +195,14 @@ export default function Login(){
                 <div className='lado--direito'>
                     {log?
                         <div className='cadastro--display'>
-                            <h1>Login</h1>
-                            <h3>Caso já tenha uma conta efetue o login</h3>
-                            <button onClick={() => setlog(false)}>Entrar</button>
-                        </div>:
-                        <div className='login--display'>
                             <h1>Cadastro</h1>
                             <h3>Caso não tenha conta tente se cadastrar</h3>
-                            <button onClick={() => setlog(true)}>Cadastro</button>
+                            <button onClick={() => setlog(false)}>Cadastrar</button>
+                        </div>:
+                        <div className='login--display'>
+                            <h1>Login</h1>
+                            <h3>Caso já tenha uma conta efetue o login</h3>
+                            <button onClick={() => setlog(true)}>Entrar</button>
                         </div>
                     }
 
